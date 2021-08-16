@@ -15,7 +15,8 @@ class ProductImage extends StatelessWidget {
             topRight: Radius.circular(45),
           ),
           child: FadeInImage(
-            image: NetworkImage("https://via.placeholder.com/400x300/green"),
+            //image: NetworkImage("https://via.placeholder.com/400x300/green"),
+            image: AssetImage("assets/green.png"),
             placeholder: AssetImage("assets/jar-loading.gif"),
             fit: BoxFit.cover,
           ),
