@@ -23,17 +23,9 @@ class ProductCard extends StatelessWidget {
               title: product.name,
               subTitle: product.id!,
             ),
-            Positioned(
-              top: 0,
-              right: 0,
-              child: _PriceTag(product.price),
-            ),
+            Positioned(top: 0, right: 0, child: _PriceTag(product.price)),
             if (!product.available)
-              Positioned(
-                top: 0,
-                left: 0,
-                child: _NotAvailable(),
-              ),
+              Positioned(top: 0, left: 0, child: _NotAvailable()),
           ],
         ),
       ),
@@ -41,16 +33,12 @@ class ProductCard extends StatelessWidget {
   }
 
   BoxDecoration _cardBorders() => BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(25),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            offset: Offset(0, 7),
-            blurRadius: 10,
-          ),
-        ],
-      );
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(25),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black12, offset: Offset(0, 7), blurRadius: 10)
+          ]);
 }
 
 class _NotAvailable extends StatelessWidget {
@@ -62,7 +50,7 @@ class _NotAvailable extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: Text(
-            "No disponible",
+            'No disponible',
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
@@ -70,9 +58,12 @@ class _NotAvailable extends StatelessWidget {
       width: 100,
       height: 70,
       decoration: BoxDecoration(
-          color: Colors.yellow[800],
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25), bottomRight: Radius.circular(25))),
+        color: Colors.yellow[800],
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25),
+          bottomRight: Radius.circular(25),
+        ),
+      ),
     );
   }
 }
@@ -90,7 +81,7 @@ class _PriceTag extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: Text(
-            "\$$price",
+            '\$$price',
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
@@ -111,7 +102,7 @@ class _PriceTag extends StatelessWidget {
 
 class _ProductDetails extends StatelessWidget {
   final String title;
-  final subTitle;
+  final String subTitle;
 
   const _ProductDetails({required this.title, required this.subTitle});
 
@@ -130,19 +121,15 @@ class _ProductDetails extends StatelessWidget {
             Text(
               title,
               style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
             Text(
               subTitle,
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.white,
-              ),
+              style: TextStyle(fontSize: 15, color: Colors.white),
             ),
           ],
         ),
@@ -172,10 +159,7 @@ class _BackgroundImage extends StatelessWidget {
         width: double.infinity,
         height: 400,
         child: url == null
-            ? Image(
-                image: AssetImage("assets/no-image.png"),
-                fit: BoxFit.cover,
-              )
+            ? Image(image: AssetImage('assets/no-image.png'), fit: BoxFit.cover)
             : FadeInImage(
                 placeholder: AssetImage('assets/jar-loading.gif'),
                 image: NetworkImage(url!),

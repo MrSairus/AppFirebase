@@ -1,14 +1,11 @@
-//import 'dart:io';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 
 class ProductImage extends StatelessWidget {
   final String? url;
 
-  const ProductImage({
-    Key? key,
-    this.url,
-  }) : super(key: key);
+  const ProductImage({Key? key, this.url}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +18,13 @@ class ProductImage extends StatelessWidget {
         child: Opacity(
           opacity: 0.9,
           child: ClipRRect(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(45),
-              topRight: Radius.circular(45),
-            ),
-            //Comentar para el error
-            child: this.url == null
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(45),
+                topRight: Radius.circular(45),
+              ),
+              //Descomentar para ver imágen
+              /*
+              child: this.url == null
                 ? Image(
                     image: AssetImage("assets/no-image.png"),
                     fit: BoxFit.cover,
@@ -36,8 +34,9 @@ class ProductImage extends StatelessWidget {
                     placeholder: AssetImage("assets/jar-loading.gif"),
                     fit: BoxFit.cover,
                   ),
-            //child: getImage(url)),
-          ),
+              */
+              //Comentar para obtener el link de la imágen
+              child: getImage(url)),
         ),
       ),
     );
@@ -54,26 +53,26 @@ class ProductImage extends StatelessWidget {
             color: Colors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: Offset(0, 5),
-          ),
+          )
         ],
       );
-  /*Widget getImage(String? picture) {
+  //Comentar para no error
+  Widget getImage(String? picture) {
     if (picture == null)
       return Image(
-        image: AssetImage("assets/no-image.png"),
+        image: AssetImage('assets/no-image.png'),
         fit: BoxFit.cover,
       );
-    if (picture.startsWith("http")) {
+
+    if (picture.startsWith('http'))
       return FadeInImage(
         image: NetworkImage(this.url!),
-        //image: AssetImage("assets/green.png"),
-        placeholder: AssetImage("assets/jar-loading.gif"),
+        placeholder: AssetImage('assets/jar-loading.gif'),
         fit: BoxFit.cover,
       );
-    }
     return Image.file(
       File(picture),
       fit: BoxFit.cover,
     );
-  }*/
+  }
 }

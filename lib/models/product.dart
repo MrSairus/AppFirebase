@@ -4,14 +4,15 @@
 
 import 'dart:convert';
 
+import 'package:productos_app/models/models.dart';
+
 class Product {
-  Product({
-    required this.available,
-    required this.name,
-    this.picture,
-    required this.price,
-    this.id,
-  });
+  Product(
+      {required this.available,
+      required this.name,
+      this.picture,
+      required this.price,
+      this.id});
 
   bool available;
   String name;

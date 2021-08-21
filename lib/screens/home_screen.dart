@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:productos_app/models/models.dart';
 import 'package:productos_app/screens/screens.dart';
 import 'package:productos_app/services/services.dart';
-import 'package:productos_app/widgets/product_card.dart';
-import 'package:provider/provider.dart';
+import 'package:productos_app/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -14,30 +14,26 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Productos"),
+        title: Text('Productos'),
       ),
       body: ListView.builder(
-        itemCount: productsService.products.length,
-        itemBuilder: (BuildContext context, int index) => GestureDetector(
-          onTap: () {
-            productsService.selectedProduct =
-                productsService.products[index].copy();
-            Navigator.pushNamed(context, "product");
-          },
-          child: ProductCard(
-            product: productsService.products[index],
-          ),
-        ),
-      ),
+          itemCount: productsService.products.length,
+          itemBuilder: (BuildContext context, int index) => GestureDetector(
+                onTap: () {
+                  productsService.selectedProduct =
+                      productsService.products[index].copy();
+                  Navigator.pushNamed(context, 'product');
+                },
+                child: ProductCard(
+                  product: productsService.products[index],
+                ),
+              )),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          productsService.selectedProduct = new Product(
-            available: false,
-            name: '',
-            price: 0,
-          );
-          Navigator.pushNamed(context, "product");
+          productsService.selectedProduct =
+              new Product(available: false, name: '', price: 0);
+          Navigator.pushNamed(context, 'product');
         },
       ),
     );
